@@ -6,4 +6,10 @@ puz = load.Constructor(sample)
 
 puzzle = puz.convert_to_puzzle()
 
+print(puzzle.total_possibilities_left)
+
+puzzle.pretty_print()
+
+puzzle.solve()
+
 puzzle.pretty_print()

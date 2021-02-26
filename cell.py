@@ -1,3 +1,4 @@
+from typing import Union
 from math import floor
 
 '''
@@ -22,7 +23,7 @@ region_names = [
 
 
 class Cell:
-    def __init__(self, index, value):
+    def __init__(self, index: int, value: Union[int, None]):
         # row, column, and region are all 1 indexed
         self.row = floor(index / 9)
         self.col = index % 9
@@ -54,3 +55,11 @@ class Cell:
         if self.val is None:
             entry = '-'
         print(f'{entry} @ ({self.row}, {self.col}, {self.region})')
+
+    def print_possibilities_list(self):
+        print(f'{self.index}: {self.values_still_possible}')
+
+    def check_if_solved(self):
+        if len(self.values_still_possible) == 1:
+            self.val = self.values_still_possible.pop()
+            print(f"Just solved: {self.index}")
